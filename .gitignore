@@ -1,2 +1,3 @@
 # add /books directory
 /books
+__pycache__
