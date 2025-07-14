@@ -12,3 +12,17 @@ def counting_characters(text):
         else:
             char_counts[lower_case_character] = 1    
     return char_counts
+    
+def sorting_dictionary(items):
+    for item in items:
+        is_alphabetical = item.isalpha()
+        item.sort(reverse=True, key=sorting_dictionary)
+    return items["num"]
+
+def sort_characters(char_counts):
+    char_list = []
+    # loop dan append
+    for char in char_counts:
+        char_list.append({"char": char, "num": char_counts[char]})
+    char_list.sort(key = lambda item: item["num"], reverse=True)
+    return char_list
