@@ -1,13 +1,16 @@
+import sys
 from stats import get_num_words, counting_characters, sort_characters
-path_to_file = "/home/akutokyo/workspace/github.com/madwichery/bookbot/books/frankenstein.txt"
+# path_to_file = "/home/akutokyo/workspace/github.com/madwichery/bookbot/books/frankenstein.txt"
+
+
 
 def get_book_text(path_to_file):
     with open(path_to_file) as f:
         file_contents = f.read()
     return file_contents
 
-def main():
-    text_from = get_book_text(path_to_file)
+def main(book_path):
+    text_from = get_book_text(book_path)
     num_words = get_num_words(text_from)
     print(f"{num_words} words found in the document")
 
@@ -16,7 +19,7 @@ def main():
     sorted_chars = sort_characters(char_counts)
     
     print("============ BOOKBOT ============")
-    print(f"Analyzing book found at {path_to_file}...")
+    print(f"Analyzing book found at {book_path}...")
     print("----------- Word Count ----------")
     print(f"Found {num_words} total words")
     print("--------- Character Count -------")
@@ -26,4 +29,9 @@ def main():
     print("============= END ==============")
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    path_to_file = sys.argv[1]
+    main(path_to_file)
+    
